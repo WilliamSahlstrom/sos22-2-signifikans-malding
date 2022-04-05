@@ -2,9 +2,12 @@ package fi.arcada.projekt_chi2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,12 +15,32 @@ public class MainActivity extends AppCompatActivity {
     Button btn1, btn2, btn3, btn4;
     // Deklarera 4 heltalsvariabler för knapparnas värden
     int val1, val2, val3, val4;
+    TextView textOut, textView2;
+    int launchCount;
 
+    //Objekt för preferences
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor prefEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        textOut = findViewById(R.id.textView);
+        textView2 = findViewById(R.id.textView2);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        //Hämta ut det gamla värdet, addera 1, och spara igen
+        prefEditor = sharedPref.edit();
+        prefEditor.putInt("launchCount", sharedPref.getInt("launchCount", 0)+1);
+        prefEditor.apply();
+        //Hämta ut värdet
+        launchCount = sharedPref.getInt("launchCount", 0);
+
+        textOut.setText(String.format("Appen startar %d gånger.", launchCount));
+
+        textView2.setText(String.format("Välkommen tillbaka %s", "Stranger"));
 
         // Koppla samman Button-objekten med knapparna i layouten
         btn1 = findViewById(R.id.button1);

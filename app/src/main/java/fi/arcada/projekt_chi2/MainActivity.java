@@ -2,6 +2,7 @@ package fi.arcada.projekt_chi2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         textOut.setText(String.format("Appen startar %d gånger.", launchCount));
 
-        textView2.setText(String.format("Välkommen tillbaka %s", "Stranger"));
+        //Username har vi skrivit in i Settings activity
+        textView2.setText(String.format("Välkommen tillbaka %s", sharedPref.getString("userName", null)));
 
         // Koppla samman Button-objekten med knapparna i layouten
         btn1 = findViewById(R.id.button1);
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         btn4 = findViewById(R.id.button4);
 
 
+    }
+    public void openSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     /**

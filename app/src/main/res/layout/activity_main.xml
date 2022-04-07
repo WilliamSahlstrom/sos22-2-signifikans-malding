@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textViewRow3"
+        android:layout_width="141dp"
+        android:layout_height="46dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.322" />
+
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
@@ -24,15 +35,13 @@
                 android:layout_width="match_parent"
                 android:layout_column="1"
                 android:layout_marginLeft="15dp"
-                android:layout_marginBottom="4dp"
-                android:text="textViewCol1" />
+                android:layout_marginBottom="4dp" />
 
             <TextView
                 android:id="@+id/textViewCol2"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="15dp"
-                android:layout_marginBottom="4dp"
-                android:text="textViewCol2" />
+                android:layout_marginBottom="4dp" />
 
         </TableRow>
 
@@ -43,8 +52,7 @@
             <TextView
                 android:id="@+id/textViewRow1"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="4dp"
-                android:text="textViewRow1" />
+                android:layout_marginBottom="4dp" />
 
             <Button
                 android:id="@+id/button1"
@@ -71,8 +79,7 @@
             <TextView
                 android:id="@+id/textViewRow2"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="4dp"
-                android:text="textViewRow2" />
+                android:layout_marginBottom="4dp" />
 
             <Button
                 android:id="@+id/button3"
@@ -126,4 +133,46 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="173dp"
+        android:layout_height="42dp"
+        android:text="Tryck på knapparna för att öka antalet med 1"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.605"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="buttonClick"
+        android:text="BÖRJA OM"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCol3"
+        android:layout_width="74dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewRow3"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <TextView
+        android:id="@+id/textViewCol4"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toEndOf="@+id/textViewCol3"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

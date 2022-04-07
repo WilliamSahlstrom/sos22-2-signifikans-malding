@@ -3,32 +3,30 @@
     <PreferenceCategory app:title="Inställningar">
 
         <EditTextPreference
-            app:key="userName"
-            app:title="Ditt namn"
+            app:key="Kolumn1"
+            app:title="Kolumn1"
             app:useSimpleSummaryProvider="true" />
 
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+        <EditTextPreference
+            app:key="Kolumn2"
+            app:title="Kolumn2"
             app:useSimpleSummaryProvider="true" />
 
-    </PreferenceCategory>
+        <EditTextPreference
+            app:key="Rad1"
+            app:title="Rad1"
+            app:useSimpleSummaryProvider="true" />
 
-    <PreferenceCategory app:title="@string/sync_header">
+        <EditTextPreference
+            app:key="Rad2"
+            app:title="Rad2"
+            app:useSimpleSummaryProvider="true" />
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+        <EditTextPreference
+            app:key="Signifikansnivå"
+            app:title="Signifikansnivå"
+            app:useSimpleSummaryProvider="true" />
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
 
     </PreferenceCategory>
 

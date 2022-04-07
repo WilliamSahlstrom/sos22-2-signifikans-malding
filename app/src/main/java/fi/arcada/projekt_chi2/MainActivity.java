@@ -13,10 +13,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     // Deklarera 4 Button-objekt
-    Button btn1, btn2, btn3, btn4;
+    Button btn1, btn2, btn3, btn4, btn5;
     // Deklarera 4 heltalsvariabler för knapparnas värden
     int val1, val2, val3, val4;
-    TextView textOut, textView2;
+    TextView textOut, textView2, textViewCol1, textViewCol2, textViewCol3, textViewCol4, textViewRow1, textViewRow2, textViewRow3;
     int launchCount;
 
     //Objekt för preferences
@@ -28,28 +28,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textViewCol1 = findViewById(R.id.textViewCol1);
+        textViewCol2 = findViewById(R.id.textViewCol2);
+        textViewCol3 = findViewById(R.id.textViewCol3);
+        textViewCol4 = findViewById(R.id.textViewCol4);
+        textViewRow1 = findViewById(R.id.textViewRow1);
+        textViewRow2 = findViewById(R.id.textViewRow2);
+        textViewRow3 = findViewById(R.id.textViewRow3);
         textOut = findViewById(R.id.textView);
         textView2 = findViewById(R.id.textView2);
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
         //Hämta ut det gamla värdet, addera 1, och spara igen
-        prefEditor = sharedPref.edit();
+        /*prefEditor = sharedPref.edit();
         prefEditor.putInt("launchCount", sharedPref.getInt("launchCount", 0)+1);
         prefEditor.apply();
         //Hämta ut värdet
         launchCount = sharedPref.getInt("launchCount", 0);
 
-        textOut.setText(String.format("Appen startar %d gånger.", launchCount));
+        textOut.setText(String.format("Appen har startats %d ", launchCount));*/
 
         //Username har vi skrivit in i Settings activity
-        textView2.setText(String.format("Välkommen tillbaka %s", sharedPref.getString("userName", null)));
+        textViewCol1.setText(String.format("%s", sharedPref.getString("Kolumn1", null)));
+        textViewCol2.setText(String.format("%s", sharedPref.getString("Kolumn2", null)));
+        textViewCol3.setText(String.format("%s", sharedPref.getString("Kolumn1", null)));
+        textViewCol4.setText(String.format("%s", sharedPref.getString("Kolumn2", null)));
+        textViewRow1.setText(String.format("%s", sharedPref.getString("Rad1", null)));
+        textViewRow2.setText(String.format("%s", sharedPref.getString("Rad2", null)));
+        textViewRow3.setText(String.format("%s", sharedPref.getString("Rad1", null)));
 
         // Koppla samman Button-objekten med knapparna i layouten
         btn1 = findViewById(R.id.button1);
         btn2 = findViewById(R.id.button2);
         btn3 = findViewById(R.id.button3);
         btn4 = findViewById(R.id.button4);
-
+        btn5 = findViewById(R.id.button5);
 
     }
     public void openSettings(View view) {
@@ -71,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
         if (view.getId() == R.id.button2) val2++;
         if (view.getId() == R.id.button3) val3++;
         if (view.getId() == R.id.button4) val4++;
+        if (view.getId() == R.id.button5) {
+            val1 = 0;
+            val2 = 0;
+            val3 = 0;
+            val4 = 0;
+        }
 
         // Slutligen, kör metoden som ska räkna ut allt!
         calculate();
@@ -94,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         // Mata in chi2-resultatet i getP() och ta emot p-värdet
         double pValue = Significance.getP(chi2);
 
+
         /**
          *  - Visa chi2 och pValue åt användaren på ett bra och tydligt sätt!
          *
@@ -105,7 +125,12 @@ public class MainActivity extends AppCompatActivity {
          *
          */
 
-    }
+        // %.2f i String.format() avrundar till två decimaler
+        String uträkningStr = String.format("%s: %.2f",
+                "Chi resultatet är", chi2
+        );
 
+        textOut.setText(uträkningStr);
+    }
 
 }

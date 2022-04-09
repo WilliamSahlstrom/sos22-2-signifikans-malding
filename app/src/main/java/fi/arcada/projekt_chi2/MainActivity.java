@@ -62,25 +62,34 @@ public class MainActivity extends AppCompatActivity {
         btn4 = findViewById(R.id.button4);
         btn5 = findViewById(R.id.button5);
 
-        //SharedPreferences.Editor prefEditor = sharedPref.edit();
-        /*prefEditor.putInt("Signifikansnivå",5);
-        prefEditor = sharedPref.edit();
-        prefEditor.apply();*/
 
-        //btn1.setText((String.format("%d", sharedPref.getString("button1",null))));
 
         //Username har vi skrivit in i Settings activity
-        /*textView2.setText(String.format("Välkommen tillbaka %s", sharedPref.getString("userName", null)));
-        //Hämta ut det gamla värdet, addera 1, och spara igen
-        prefEditor = sharedPref.edit();
-        prefEditor.putInt("btn1", sharedPref.getInt("button1", 0));*/
-        /*prefEditor.putInt("button2", sharedPref.getInt("button2", 0));
-        prefEditor.putInt("button3", sharedPref.getInt("button3", 0));
-        prefEditor.putInt("button4", sharedPref.getInt("button4", 0));*/
-        //prefEditor.apply();
-        //Hämta ut värdet
-        //button1= sharedPref.getInt("button1", 0);
+        //textView2.setText(String.format("Välkommen tillbaka %s", sharedPref.getString("userName", null)));
 
+
+
+        /*Hämta ut det gamla värdet, addera 1, och spara igen
+        prefEditor = sharedPref.edit();
+        prefEditor.putInt("launchCount", sharedPref.getInt("launchCount", 0)+1);
+        prefEditor.apply();
+        // Motsvarande metoder för andra datatyper: getString()/putString() getBoolean()/putBoolean()
+
+        // Hämta ut värdet och skriv ut i appen
+        launchCount = sharedPref.getInt("launchCount", 0);
+        textOut.setText(String.format("Appen startad %d gånger.", launchCount)); */
+        //Hämta ut värdet
+        val1= sharedPref.getInt("val1", 0);
+        btn1.setText(String.format("%d", val1));
+
+        val2= sharedPref.getInt("val2", 0);
+        btn2.setText(String.format("%d", val2));
+
+        val3= sharedPref.getInt("val3", 0);
+        btn3.setText(String.format("%d", val3));
+
+        val4= sharedPref.getInt("val4",0);
+        btn4.setText(String.format("%d", val4));
 
         //textOut.setText(String.format("Appen har startats %d ", launchCount));
 
@@ -100,15 +109,45 @@ public class MainActivity extends AppCompatActivity {
         Button btn = (Button) view;
 
         // Kontrollera vilken knapp som klickats, öka värde på rätt vaiabel
-        if (view.getId() == R.id.button1) val1++;
-        if (view.getId() == R.id.button2) val2++;
-        if (view.getId() == R.id.button3) val3++;
-        if (view.getId() == R.id.button4) val4++;
+        if (view.getId() == R.id.button1) {
+            //Hämta ut det gamla värdet, addera 1, och spara igen
+            prefEditor = sharedPref.edit();
+            val1++;
+            prefEditor.putInt("val1", sharedPref.getInt("val1", 0)+1);
+            prefEditor.apply();
+        }
+        if (view.getId() == R.id.button2) {
+            //Hämta ut det gamla värdet, addera 1, och spara igen
+            prefEditor = sharedPref.edit();
+            val2++;
+            prefEditor.putInt("val2", sharedPref.getInt("val2", 0)+1);
+            prefEditor.apply();
+        }
+        if (view.getId() == R.id.button3) {
+            //Hämta ut det gamla värdet, addera 1, och spara igen
+            prefEditor = sharedPref.edit();
+            val3++;
+            prefEditor.putInt("val3", sharedPref.getInt("val3", 0)+1);
+            prefEditor.apply();
+        }
+        if (view.getId() == R.id.button4) {
+            //Hämta ut det gamla värdet, addera 1, och spara igen
+            prefEditor = sharedPref.edit();
+            val4++;
+            prefEditor.putInt("val4", sharedPref.getInt("val4", 0)+1);
+            prefEditor.apply();
+        }
         if (view.getId() == R.id.button5) {
+            prefEditor = sharedPref.edit();
             val1 = 0;
             val2 = 0;
             val3 = 0;
             val4 = 0;
+            prefEditor.putInt("val1", sharedPref.getInt("val1", 0)*0);
+            prefEditor.putInt("val2", sharedPref.getInt("val2", 0)*0);
+            prefEditor.putInt("val3", sharedPref.getInt("val3", 0)*0);
+            prefEditor.putInt("val4", sharedPref.getInt("val4", 0)*0);
+            prefEditor.apply();
         }
 
         // Slutligen, kör metoden som ska räkna ut allt!
@@ -125,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
         btn2.setText(String.valueOf(val2));
         btn3.setText(String.valueOf(val3));
         btn4.setText(String.valueOf(val4));
-
 
         //Procenterna
         double percent = Significance.calcPercent(val1, val3);

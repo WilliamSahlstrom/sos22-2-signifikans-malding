@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         textView9 = findViewById(R.id.textView9);
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
-
-
         //Username har vi skrivit in i Settings activity
         textViewCol1.setText(String.format("%s", sharedPref.getString("Kolumn1", null)));
         textViewCol2.setText(String.format("%s", sharedPref.getString("Kolumn2", null)));
@@ -53,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         textViewRow2.setText(String.format("%s", sharedPref.getString("Rad2", null)));
         textViewRow3.setText(String.format("%s", sharedPref.getString("Rad1", null)));
         textView2.setText(String.format("%s", sharedPref.getString("Signifikansnivå", null)));
-
 
         // Koppla samman Button-objekten med knapparna i layouten
         btn1 = findViewById(R.id.button1);
@@ -63,21 +60,6 @@ public class MainActivity extends AppCompatActivity {
         btn5 = findViewById(R.id.button5);
 
 
-
-        //Username har vi skrivit in i Settings activity
-        //textView2.setText(String.format("Välkommen tillbaka %s", sharedPref.getString("userName", null)));
-
-
-
-        /*Hämta ut det gamla värdet, addera 1, och spara igen
-        prefEditor = sharedPref.edit();
-        prefEditor.putInt("launchCount", sharedPref.getInt("launchCount", 0)+1);
-        prefEditor.apply();
-        // Motsvarande metoder för andra datatyper: getString()/putString() getBoolean()/putBoolean()
-
-        // Hämta ut värdet och skriv ut i appen
-        launchCount = sharedPref.getInt("launchCount", 0);
-        textOut.setText(String.format("Appen startad %d gånger.", launchCount)); */
         //Hämta ut värdet
         val1= sharedPref.getInt("val1", 0);
         btn1.setText(String.format("%d", val1));
@@ -90,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         val4= sharedPref.getInt("val4",0);
         btn4.setText(String.format("%d", val4));
-
-        //textOut.setText(String.format("Appen har startats %d ", launchCount));
-
     }
     public void openSettings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
